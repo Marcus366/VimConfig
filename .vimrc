@@ -11,13 +11,13 @@ set wildmenu
 set mousemodel=popup
 
 au FileType php setlocal dict+=~/.vim/dict/php_funclist.dict
-au FileType css setlocal dict+=~/.vim/dict/css.dict
+"au FileType css setlocal dict+=~/.vim/dict/css.dict
 au FileType c setlocal dict+=~/.vim/dict/c.dict
 au FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
-au FileType scale setlocal dict+=~/.vim/dict/scale.dict
-au FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
-au FileType html setlocal dict+=~/.vim/dict/javascript.dict
-au FileType html setlocal dict+=~/.vim/dict/css.dict
+"au FileType scale setlocal dict+=~/.vim/dict/scale.dict
+"au FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
+"au FileType html setlocal dict+=~/.vim/dict/javascript.dict
+"au FileType html setlocal dict+=~/.vim/dict/css.dict
 
 "
 "syntastic相关
@@ -32,6 +32,8 @@ set rtp+=$GOROOT/misc/vim
 " 显示相关  
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
+set lines=40
+set columns=155
 set cul "高亮光标所在行
 set cuc
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
@@ -41,7 +43,7 @@ color ron     " 设置背景主题
 "color torte     " 设置背景主题  
 "set guifont=Courier_New:h10:cANSI   " 设置字体  
 "autocmd InsertLeave * se nocul  " 用浅色高亮当前行  
-autocmd InsertEnter * se cul    " 用浅色高亮当前行  
+"autocmd InsertEnter * se cul    " 用浅色高亮当前行  
 set ruler           " 显示标尺  
 set showcmd         " 输入的命令显示出来，看的清楚些  
 "set whichwrap+=<,>,h,l   " 允许backspace和光标键跨越行边界(不建议)  
@@ -130,28 +132,28 @@ func SetTitle()
 
 "    elseif &filetype == 'mkd'
 "        call setline(1,"<head><meta charset=\"UTF-8\"></head>")
-	else 
-		call setline(1, "/*************************************************************************") 
-		call append(line("."), "	> File Name: ".expand("%")) 
-		call append(line(".")+1, "	> Author: ") 
-		call append(line(".")+2, "	> Mail: ") 
-		call append(line(".")+3, "	> Created Time: ".strftime("%c")) 
-		call append(line(".")+4, " ************************************************************************/") 
-		call append(line(".")+5, "")
+"	else 
+"		call setline(1, "/*************************************************************************") 
+"		call append(line("."), "	> File Name: ".expand("%")) 
+"		call append(line(".")+1, "	> Author: ") 
+"		call append(line(".")+2, "	> Mail: ") 
+"		call append(line(".")+3, "	> Created Time: ".strftime("%c")) 
+"		call append(line(".")+4, " ************************************************************************/") 
+"		call append(line(".")+5, "")
 	endif
-	if &filetype == 'cpp'
-		call append(line(".")+6, "#include<iostream>")
-		call append(line(".")+7, "using namespace std;")
-		call append(line(".")+8, "")
-	endif
-	if &filetype == 'c'
-		call append(line(".")+6, "#include<stdio.h>")
-		call append(line(".")+7, "")
-	endif
-	if &filetype == 'java'
-		call append(line(".")+6,"public class ".expand("%:r"))
-		call append(line(".")+7,"")
-	endif
+"	if &filetype == 'cpp'
+"		call append(line(".")+6, "#include<iostream>")
+"		call append(line(".")+7, "using namespace std;")
+"		call append(line(".")+8, "")
+"	endif
+"	if &filetype == 'c'
+"		call append(line(".")+6, "#include<stdio.h>")
+"		call append(line(".")+7, "")
+"	endif
+"	if &filetype == 'java'
+"		call append(line(".")+6,"public class ".expand("%:r"))
+"		call append(line(".")+7,"")
+"	endif
 	"新建文件后，自动定位到文件末尾
 endfunc 
 autocmd BufNewFile * normal G
@@ -160,6 +162,7 @@ autocmd BufNewFile * normal G
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "键盘命令
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Esc> :shell<cr>
 :nmap <silent> <F9> <ESC>:Tlist<RETURN>
 map! <C-Z> <Esc>zzi
 map! <C-O> <C-Y>,
@@ -443,26 +446,26 @@ Bundle 'FuzzyFinder'
 " non github repos
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'Auto-Pairs'
-Bundle 'python-imports.vim'
+"Bundle 'python-imports.vim'
 Bundle 'CaptureClipboard'
 Bundle 'ctrlp-modified.vim'
 Bundle 'last_edit_marker.vim'
 Bundle 'synmark.vim'
 "Bundle 'Python-mode-klen'
 Bundle 'SQLComplete.vim'
-Bundle 'Javascript-OmniCompletion-with-YUI-and-j'
+"Bundle 'Javascript-OmniCompletion-with-YUI-and-j'
 "Bundle 'JavaScript-Indent'
 "Bundle 'Better-Javascript-Indentation'
-Bundle 'jslint.vim'
-Bundle "pangloss/vim-javascript"
+"Bundle 'jslint.vim'
+"Bundle "pangloss/vim-javascript"
 Bundle 'Vim-Script-Updater'
 Bundle 'ctrlp.vim'
 Bundle 'tacahiroy/ctrlp-funky'
-Bundle 'jsbeautify'
+"Bundle 'jsbeautify'
 Bundle 'The-NERD-Commenter'
 "django
-Bundle 'django_templates.vim'
-Bundle 'Django-Projects'
+"Bundle 'django_templates.vim'
+"Bundle 'Django-Projects'
 
 "Bundle 'FredKSchott/CoVim'
 "Bundle 'djangojump'
@@ -492,4 +495,4 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = '\v\.(exe|so|dll)$'
 let g:ctrlp_extensions = ['funky']
 
-let NERDTreeIgnore=['\.pyc']
+let NERDTreeIgnore=['\.o']

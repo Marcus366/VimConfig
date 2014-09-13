@@ -50,8 +50,6 @@ signed
 size_t
 sizeof
 static
-struct
-switch
 typedef
 union
 unsigned
@@ -372,3 +370,7 @@ SIGIO
 SIGPWR
 SIGSYS
 SIGUNUSED
+
+sin_family
+sin_port
+sin_addr
